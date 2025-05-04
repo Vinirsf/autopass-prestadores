@@ -1,3 +1,4 @@
+<!-- src/app/views/dashboard.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,41 +15,10 @@
     </header>
 
     <section id="appointments">
-        <!-- Lista de agendamentos será renderizada aqui -->
+        <p>Carregando agendamentos...</p>
     </section>
 
-    <script type="module">
-        import { supabase } from '/src/scripts/supabaseClient.js';
-
-        async function fetchAppointments() {
-            const user = (await supabase.auth.getUser()).data.user;
-            if (!user) return (window.location.href = '/src/app/views/login.html');
-
-            const { data, error } = await supabase
-                .from('appointments')
-                .select('*')
-                .eq('prestador_id', user.id)
-                .order('horario', { ascending: true });
-
-            const container = document.getElementById('appointments');
-            if (error) {
-                container.innerHTML = `<p>Erro ao carregar: ${error.message}</p>`;
-            } else if (data.length === 0) {
-                container.innerHTML = '<p>Sem agendamentos para hoje.</p>';
-            } else {
-                container.innerHTML = data
-                    .map(appt => `<div><strong>${appt.cliente}</strong> às ${appt.horario}</div>`)
-                    .join('');
-            }
-        }
-
-        fetchAppointments();
-
-        window.logout = async () => {
-            await supabase.auth.signOut();
-            window.location.href = '/src/app/views/login.html';
-        };
-    </script>
+    <script type="module" src="/src/scripts/dashboard.js"></script>
 </body>
 
 </html>
