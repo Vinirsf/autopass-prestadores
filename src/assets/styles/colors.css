@@ -1,0 +1,52 @@
+body {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 1rem;
+    color: #333;
+}
+
+header {
+    background-color: #1a73e8;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+main,
+section {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input,
+button {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #155ac4;
+}
